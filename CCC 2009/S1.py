@@ -5,9 +5,19 @@ import math
 start = int(input())
 end = int(input())
 
-def is_square(n):
-    square_root = math.sqrt(n)
-    return ((square_root - math.floor(square_root))==0)
+def is_square(n):     // BINARY SEARCH METHOD
+    if n < 0:
+        return False
+    if n == 0:
+        return True
+    x, y = 1, n
+    while x + 1 < y:
+        mid = (x+y)//2
+        if mid**2 < n:
+            x = mid
+        else:
+            y = mid
+    return n == x**2 or n == (x+1)**2
 
 def is_cube(n):
     cube_root = n**(1./3.)
