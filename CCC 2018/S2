@@ -1,0 +1,53 @@
+import copy
+n = int(input())
+data = []
+num_sum = []
+
+for i in range(0,n):
+    foo = list(map(int, input().split(" ")))
+    data.append(foo)
+
+twoo = copy.deepcopy(data)
+eightyy = copy.deepcopy(data)
+nintyy = copy.deepcopy(data)
+threee = copy.deepcopy(data)
+
+def rotateNinty(mat, N):
+    for x in range(0, int(N / 2)):
+        for y in range(x, N - x - 1):
+            temp = mat[x][y]
+            mat[x][y] = mat[y][N - 1 - x]
+            mat[y][N - 1 - x] = mat[N - 1 - x][N - 1 - y]
+            mat[N - 1 - x][N - 1 - y] = mat[N - 1 - y][x]
+            mat[N - 1 - y][x] = temp
+
+
+
+rotateNinty(threee,n)
+rotateNinty(threee,n)
+rotateNinty(threee,n)
+rotateNinty(threee,n)
+rotateNinty(twoo, n)
+rotateNinty(twoo , n)
+rotateNinty(twoo, n)
+rotateNinty(eightyy,n)
+rotateNinty(eightyy,n)
+rotateNinty(nintyy, n)
+
+if sorted(sum(y) for y in threee) == [sum(y) for y in threee] and threee == [sorted(x) for x in threee]:
+    for y in threee:
+        print(" ".join(map(str, y)))
+
+
+
+elif sorted(sum(y) for y in nintyy) == [sum(y) for y in nintyy] and nintyy == [sorted(x) for x in nintyy]:
+    for x in nintyy:
+        print(" ".join(map(str, x)))
+
+elif sorted(sum(y) for y in eightyy) == [sum(y) for y in eightyy] and eightyy == [sorted(x) for x in eightyy]:
+    for i in eightyy:
+        print(" ".join(map(str, i)))
+
+else:
+    for e in twoo:
+        print(" ".join(map(str, e)))
